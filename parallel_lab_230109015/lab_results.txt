@@ -1,0 +1,165 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\marzh\Desktop\parallel_lab_230109015> python task0_cal.py
+Student ID: 230109015
+CPU logical threads: 20
+Python: 3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]
+OS: Windows-11-10.0.26200-SP0
+Clock reads: 2,000,000
+Total elapsed: 122,335,100 ns
+Average call latency: 61.1675 ns
+VERIFY_HASH [PHASE0]: 77F5BD805BEF3B61 (P_log=20)
+PS C:\Users\marzh\Desktop\parallel_lab_230109015> python task1_falsesharing.py
+Enter physical core count from Task 0 / Windows CPU info: 14
+
+Table 1A: stride sweep at physical core count
+stride= 1, separation=  8 B, median=1131.654 ms, IQR=43.238 ms, throughput=21.208 Mops/s
+stride= 2, separation= 16 B, median=1217.730 ms, IQR=142.739 ms, throughput=19.709 Mops/s
+stride= 4, separation= 32 B, median=1720.646 ms, IQR=133.252 ms, throughput=13.948 Mops/s
+stride= 8, separation= 64 B, median=1594.142 ms, IQR=72.660 ms, throughput=15.055 Mops/s
+stride=16, separation=128 B, median=1644.264 ms, IQR=77.763 ms, throughput=14.596 Mops/s
+stride=32, separation=256 B, median=1541.946 ms, IQR=59.581 ms, throughput=15.565 Mops/s
+
+Table 1B: process scaling
+
+stride=1, T1=4527.282 ms
+p= 1, Tp=4482.309 ms, S=1.0100, E=1.0100, e=nan
+p= 2, Tp=2591.839 ms, S=1.7467, E=0.8734, e=0.144987
+p= 4, Tp=1792.216 ms, S=2.5261, E=0.6315, e=0.194494
+p= 8, Tp=2012.670 ms, S=2.2494, E=0.2812, e=0.365217
+p=16, Tp=1696.053 ms, S=2.6693, E=0.1668, e=0.332938
+p=20, Tp=1875.334 ms, S=2.4141, E=0.1207, e=0.383400
+
+stride=16, T1=4449.971 ms
+p= 1, Tp=4578.000 ms, S=0.9720, E=0.9720, e=nan
+p= 2, Tp=2488.364 ms, S=1.7883, E=0.8942, e=0.118373
+p= 4, Tp=1812.566 ms, S=2.4551, E=0.6138, e=0.209761
+p= 8, Tp=1689.328 ms, S=2.6342, E=0.3293, e=0.291002
+p=16, Tp=1714.532 ms, S=2.5954, E=0.1622, e=0.344310
+p=20, Tp=1635.585 ms, S=2.7207, E=0.1360, e=0.334263
+
+VERIFY_HASH [PHASE1]: 7A3D0D90067E7EB1 (P_log=20)
+PS C:\Users\marzh\Desktop\parallel_lab_230109015> python task2_scaling.py
+Enter physical core count: 14
+2A Strong scaling (N=1,600,000)
+p= 1, median=3525.755 ms
+p= 2, median=1938.298 ms
+p= 3, median=1422.736 ms
+p= 4, median=1158.820 ms
+p= 5, median=1013.581 ms
+p= 6, median=953.506 ms
+p= 7, median=918.440 ms
+p= 8, median=1102.823 ms
+p= 9, median=1025.258 ms
+p=10, median=1016.529 ms
+p=11, median=1055.547 ms
+p=12, median=1015.096 ms
+p=13, median=1052.146 ms
+p=14, median=1013.819 ms
+p=15, median=944.038 ms
+p=16, median=975.530 ms
+p=17, median=924.196 ms
+p=18, median=916.101 ms
+p=19, median=937.898 ms
+p=20, median=923.016 ms
+
+Strong speedup and efficiency
+p= 1, S=1.0000, E=1.0000
+p= 2, S=1.8190, E=0.9095
+p= 3, S=2.4782, E=0.8261
+p= 4, S=3.0425, E=0.7606
+p= 5, S=3.4785, E=0.6957
+p= 6, S=3.6977, E=0.6163
+p= 7, S=3.8389, E=0.5484
+p= 8, S=3.1970, E=0.3996
+p= 9, S=3.4389, E=0.3821
+p=10, S=3.4684, E=0.3468
+p=11, S=3.3402, E=0.3037
+p=12, S=3.4733, E=0.2894
+p=13, S=3.3510, E=0.2578
+p=14, S=3.4777, E=0.2484
+p=15, S=3.7348, E=0.2490
+p=16, S=3.6142, E=0.2259
+p=17, S=3.8149, E=0.2244
+p=18, S=3.8487, E=0.2138
+p=19, S=3.7592, E=0.1979
+p=20, S=3.8198, E=0.1910
+
+Measured serial fraction s=0.028469
+Amdahl S_inf=35.1258
+Amdahl S at logical threads=12.9793
+
+2B Weak scaling (N=p*250,000)
+p= 1, N=250,000, median=577.326 ms, weak_eff=1.0000
+p= 2, N=500,000, median=655.635 ms, weak_eff=0.8806
+p= 3, N=750,000, median=766.231 ms, weak_eff=0.7535
+p= 4, N=1,000,000, median=834.126 ms, weak_eff=0.6921
+p= 5, N=1,250,000, median=1007.459 ms, weak_eff=0.5731
+p= 6, N=1,500,000, median=1299.098 ms, weak_eff=0.4444
+p= 7, N=1,750,000, median=1310.497 ms, weak_eff=0.4405
+p= 8, N=2,000,000, median=1458.441 ms, weak_eff=0.3959
+p= 9, N=2,250,000, median=1549.399 ms, weak_eff=0.3726
+p=10, N=2,500,000, median=1589.732 ms, weak_eff=0.3632
+p=11, N=2,750,000, median=1825.676 ms, weak_eff=0.3162
+p=12, N=3,000,000, median=2086.590 ms, weak_eff=0.2767
+p=13, N=3,250,000, median=2127.303 ms, weak_eff=0.2714
+p=14, N=3,500,000, median=2153.410 ms, weak_eff=0.2681
+p=15, N=3,750,000, median=2418.271 ms, weak_eff=0.2387
+p=16, N=4,000,000, median=2570.892 ms, weak_eff=0.2246
+p=17, N=4,250,000, median=2551.970 ms, weak_eff=0.2262
+p=18, N=4,500,000, median=2766.848 ms, weak_eff=0.2087
+p=19, N=4,750,000, median=2776.898 ms, weak_eff=0.2079
+p=20, N=5,000,000, median=3146.434 ms, weak_eff=0.1835
+
+At p=20: strong speedup=3.8198, weak efficiency=0.1835, measured alpha=0.148834, Gustafson=17.1722
+VERIFY_HASH [PHASE2]: 391760E25DC0A85E (P_log=20)
+PS C:\Users\marzh\Desktop\parallel_lab_230109015> python task3a_roofline.py
+Enter physical core count: 14
+DRAM copy median=356.484 ms; estimated bandwidth=0.5386 GB/s
+Python compute elapsed=6.814 s; estimated compute ceiling=0.164372 GFLOP/s
+Ridge point=0.305188 FLOP/Byte
+PS C:\Users\marzh\Desktop\parallel_lab_230109015> python task3b_gemm.py
+Enter physical core count: 14
+Variant 1: 1947.647 ms, 0.058145 GFLOP/s
+Variant 2: 2801.059 ms, 0.040430 GFLOP/s
+
+Variant 3 tile sweep
+BS=  4, median=2965.844 ms, GFLOP/s=0.038183, Wtile=384 bytes
+BS=  8, median=2673.055 ms, GFLOP/s=0.042366, Wtile=1536 bytes
+BS= 12, median=2548.524 ms, GFLOP/s=0.044436, Wtile=3456 bytes
+BS= 16, median=3098.973 ms, GFLOP/s=0.036543, Wtile=6144 bytes
+BS= 24, median=5735.523 ms, GFLOP/s=0.019745, Wtile=13824 bytes
+BS= 32, median=3265.934 ms, GFLOP/s=0.034675, Wtile=24576 bytes
+BS= 48, median=4735.368 ms, GFLOP/s=0.023915, Wtile=55296 bytes
+BS= 64, median=3364.930 ms, GFLOP/s=0.033655, Wtile=98304 bytes
+BS= 96, median=4380.751 ms, GFLOP/s=0.025851, Wtile=221184 bytes
+BS=128, median=3993.098 ms, GFLOP/s=0.028360, Wtile=393216 bytes
+
+Best tile: BS=12, GFLOP/s=0.044436
+VERIFY_HASH [PHASE3]: EB7225E23DE15B40 (P_log=20)
+PS C:\Users\marzh\Desktop\parallel_lab_230109015> python task4_scheduling.py
+Enter physical core count:
+Traceback (most recent call last):
+  File "C:\Users\marzh\Desktop\parallel_lab_230109015\task4_scheduling.py", line 96, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\marzh\Desktop\parallel_lab_230109015\task4_scheduling.py", line 77, in main
+    p=int(input("Enter physical core count: ").strip())
+ValueError: invalid literal for int() with base 10: ''
+PS C:\Users\marzh\Desktop\parallel_lab_230109015> python task4_scheduling.py
+Enter physical core count: 14
+Strategy 1 - contiguous static
+Wall=6556.438 ms, lambda=2.5171
+Strategy 2 - cyclic static
+Wall=4281.272 ms, lambda=1.0240
+Strategy 3 - dynamic chunks
+chunk=   1, wall=13137.323 ms, lambda=1.0103
+chunk=   4, wall=11372.560 ms, lambda=1.0440
+chunk=  16, wall=11604.199 ms, lambda=1.0917
+chunk=  64, wall=5826.309 ms, lambda=1.1012
+chunk= 256, wall=5274.246 ms, lambda=1.3298
+chunk=1024, wall=10073.919 ms, lambda=2.4343
+Best chunk=256, wall=5274.246 ms, lambda=1.3298
+VERIFY_HASH [PHASE4]: 8F70CEC83298C22C (P_log=20)
+PS C:\Users\marzh\Desktop\parallel_lab_230109015>
